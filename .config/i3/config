@@ -1,0 +1,186 @@
+#__________________________________________________________#
+#                                                          #
+#     ▄████████████▄   ██████   █    █   ████▙   █████     #
+#     ██ ▄▄ ██ ▄▄ ██   █    █   █    █   █   █   █         #
+#     ██ ██ ██ ██ ██   █    █   █    █   █▒▒▒█   █▒▒       #
+#     ██ ██ ██ ██ ██   █   ▒█   █    █   █████▙  ███       #
+#     ██ ██ ██ ██ ██   █   ███  █    █   █    █  █         #
+#     ██▂▂▂▂██▂▂▂▂██   █▒▒▒▒█   █▒▒▒▒█   █▒▒▒▒█  █▒▒▒▒     #
+#     ▀████████████▀   ██████   ██████   █████▛  █████     #
+#                                                          #
+#__________________________________________________________#
+
+
+#_________________________________________________________GLOBAL
+set $mod Mod4
+set $mod2 Mod1
+font pango:Terminus 14
+floating_modifier $mod
+
+
+
+#_________________________________________________________KEYBINDS
+#PROGRAMS
+#Terminal
+bindsym $mod+z exec --no-startup-id st zsh
+#File Manager
+bindsym $mod+w exec --no-startup-id spacefm
+#Discord
+bindsym $mod+d exec --no-startup-id discord-canary --disable-smooth-scrolling --ignore-gpu-blocklist --disable-features=UseOzonePlatform --enable-features=VaapiVideoDecoder --use-gl=desktop --enable-gpu-rasterization --enable-zero-copy --no-sandbox
+#Powercord
+#bindsym $mod+d exec --no-startup-id powercord --disable-smooth-scrolling --ignore-gpu-blocklist --disable-features=UseOzonePlatform --enable-features=VaapiVideoDecoder --use-gl=desktop --enable-gpu-rasterization --enable-zero-copy --no-sandbox
+#Screenshot (with Flameshot)
+bindsym $mod+Shift+D exec --no-startup-id /home/qube/.scripts/shell/screenshot.sh
+#Screenshot (with scrot)
+#bindsym $mod+Shift+D exec --no-startup-id /home/qube/.scripts/shell/scrot.sh
+#Chromium
+#bindsym $mod+s exec --no-startup-id chromium --process-per-site --disable-reading-from-canvas
+#Librewolf
+bindsym $mod+s exec librewolf
+# start rofi (a program launcher)
+bindsym $mod2+space exec --no-startup-id rofi -show
+#NAVIGATION AND SUCH
+#Kill window
+bindsym $mod+Shift+z kill
+#Change window focus
+bindsym $mod+Shift+N focus left
+bindsym $mod+Shift+E focus down
+bindsym $mod+Shift+I focus up
+bindsym $mod+Shift+O focus right
+#Change window focus with arrow keys
+bindsym $mod+Shift+Left focus left
+bindsym $mod+Shift+Down focus down
+bindsym $mod+Tab focus up
+bindsym $mod2+Tab focus right
+#Move focused window
+bindsym $mod+n move left
+bindsym $mod+e move down
+bindsym $mod+u move up
+#Move focused window with arrow keys
+bindsym $mod+Left move left
+bindsym $mod+Down move down
+bindsym $mod+Up move up
+bindsym $mod+Right move right
+#Horizontal Split
+bindsym $mod+c split h
+#Vertical Split
+bindsym $mod+x split v
+#Fullscreen
+bindsym $mod+v fullscreen toggle
+#Change window mode
+#bindsym $mod+o layout stacking
+#bindsym $mod+k layout tabbed
+#bindsym $mod+l layout toggle split
+#Toggle Tiling/Floating
+bindsym $mod+Shift+space floating toggle
+#Change focus between Tiling/Floating windows
+#bindsym $mod2+Shift focus mode_toggle
+#Focus parent window
+#bindsym $mod+a focus parent
+#Focus child window
+#bindsym $mod+d focus child
+
+
+
+#_________________________________________________________WORKSPACES
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+#Switch to workspace
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+#Move focused window to workspace
+bindsym $mod+Shift+1 move container to workspace number $ws1; workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2; workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3; workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4; workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws4; workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws4; workspace number $ws6
+
+
+
+#_________________________________________________________OTHER
+#Reload config
+bindsym $mod+Shift+c reload
+#Restart i3
+bindsym $mod+Shift+R restart
+#Exit i3 (logout of X session)
+bindsym $mod+Shift+Q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+#Resize windows
+bindsym $mod+Ctrl+Left resize shrink width 10 px or 10 ppt
+bindsym $mod+Ctrl+Up resize grow height 10 px or 10 ppt
+bindsym $mod+Ctrl+Down resize shrink height 10 px or 10 ppt
+bindsym $mod+Ctrl+Right resize grow width 10 px or 10 ppt
+
+##i3 bar
+#bar
+#{ status_command i3status }
+
+
+
+#_________________________________________________________AUTOSTART
+# https://wiki.archlinux.org/index.php/XDG_Autostart
+exec --no-startup-id dex --autostart --environment i3
+#Audio
+exec --no-startup-id pipewire
+exec --no-startup-id pipewire-alsa
+exec --no-startup-id pipewire-pulse
+exec --no-startup-id pipewire-jack
+exec --no-startup-id wireplumber
+#exec --no-startup-id pipewire-media-session
+exec --no-startup-id easyeffects --gapplication-service
+#Audio Patchbay setup
+#exec --no-startup-id qpwgraph -am ~/.config/qpwgraph/OBS_yes.qpwgraph
+#Polkit
+exec --no-startup-id lxsession
+#Keyboard layout
+#exec_always --no-startup-id setxkbmap -layout us,us -variant ,colemak -option grp:shifts_toggle -option caps:none
+#Keyboard rate
+exec_always --no-startup-id xset r rate 275 23
+#Background
+exec_always --no-startup-id feh --bg-fill --random "/media/D/Pictures/other/wallpapers/good/"
+#Polybar
+exec_always --no-startup-id $HOME/.scripts/shell/polybar.sh
+#Compositor
+exec_always --no-startup-id picom --experimental-backends
+
+
+
+#_________________________________________________________THEMEING
+#Window rules
+for_window [class="Gcolor"] floating enable sticky enable
+for_window [class="Arandr"] floating enable
+for_window [class="Tor Browser"] floating enable sticky enable
+for_window [class="mpv"] floating enable
+for_window [class="feh"] floating enable
+for_window [class="Deadbeef"] floating enable sticky enable
+for_window [class="nobleNote"] floating enable
+for_window [class="com-cburch-logisim-Main"] floating enable
+for_window [class="Galculator"] floating enable
+for_window [class="Nm-connection-editor"] floating enable
+for_window [title="Parallel Launcher - Now Playing"] floating enable
+for_window [class="retroarch"] floating enable
+for_window [class="explorer.exe"] floating enable
+for_window [class="Glc_player"] floating enable
+for_window [class="cutentr"] floating enable
+for_window [class="Sxiv"] floating enable
+#for_window [class=""] floating enable
+#for_window [class=""] floating enable
+#for_window [class=""] floating enable
+
+#i3gaps and color
+gaps inner 13
+for_window [class=".*"] border pixel 7
+hide_edge_borders true
+#class                      #border     #backgr     #text       #indicator      #child_border
+client.focused              #FFFFFF     #FFFFFF     #FFFFFF     #E2648B         #00BAFF
+client.focused_inactive     #FFFFFF     #FFFFFF     #FFFFFF     #000000         #000000
+client.unfocused            #FFFFFF     #FFFFFF     #FFFFFF     #000000         #000000

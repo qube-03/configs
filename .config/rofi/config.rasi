@@ -1,0 +1,11 @@
+configuration {
+ display-drun: "Run";
+ display-window: "Windows";
+ drun-display-format: "{icon} {name}";
+ font: "Terminus 18";
+ modi: "drun,window,calc,emoji,combi";
+ show-icons: true;
+ icon-theme: "Papirus";
+ }
+
+@theme "~/.local/share/rofi/themes/sidebar.rasi"
