@@ -10,38 +10,33 @@
 "                                                          "
 "__________________________________________________________"
 
-"----------------------------------------------------------Plugins
-call plug#begin('~/.local/share/nvim/plugged')
-
-Plug 'norcalli/nvim-colorizer.lua'
-Plug 'itchyny/lightline.vim'
-Plug 'andweeb/presence.nvim'
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'kyazdani42/nvim-tree.lua'
-"Plug 'lukas-reineke/indent-blankline.nvim'
-
-"LSP
-"Plug 'neovim/nvim-lspconfig'
-"Plug 'williamboman/nvim-lsp-installer'
-"Plug 'hrsh7th/cmp-nvim-lsp'
-"Plug 'hrsh7th/nvim-cmp'
-"Plug 'saadparwaiz1/cmp_luasnip'
-"Plug 'L3MON4D3/LuaSnip'
-
-"Themes
-Plug 'whatyouhide/vim-gotham'
-
-
-call plug#end()
+"----------------------------------------------------------Settings
+:set expandtab
+:set tabstop=2
+:set smarttab
+:set ignorecase
+:set hidden
+:set smartcase
+:set hlsearch
+:set incsearch
+:set lazyredraw
+:set magic
+:set showmatch
+:set nobackup
+:set background=dark
+:set shiftwidth=2
+:set number relativenumber
+:filetype plugin on
+:syntax enable
+:set termguicolors
+:set encoding=UTF-8
 
 
 
 "----------------------------------------------------------Plugin Settings
-:set termguicolors
-lua require'colorizer'.setup()
-let g:lightline = {'colorscheme': 'gotham256',}
-
-let g:fff#split = "30vnew"
+:lua require('plugins')
+:lua require('colorizer').setup()
+":lua require('feline').setup({ preset = 'noicon' })
 
 
 
@@ -83,28 +78,6 @@ inoremap <expr> <CR>
     \ ? "<Left>\<CR>\<Right>\ \ \<Left>" : "\<CR>"
 
 
-"----------------------------------------------------------Settings
-:set expandtab
-:set tabstop =2
-:set smarttab
-:set ignorecase
-:set hidden
-:set smartcase
-:set hlsearch
-:set incsearch
-:set lazyredraw
-:set magic
-:set showmatch
-:set nobackup
-:set background=dark
-:set shiftwidth =2
-:set number relativenumber
-:filetype plugin on
-:syntax enable
-:set termguicolors
-:set encoding=UTF-8
-
-
 
 "----------------------------------------------------------Colorscheme
 :colorscheme gotham256
@@ -124,28 +97,28 @@ inoremap <expr> <CR>
 
 
 "----------------------------------------------------------NvimTree
-:lua require'nvim-tree'.setup()
+":lua require'nvim-tree'.setup()
 
-let g:nvim_tree_icons = {
-    \ 'default': "",
-    \ 'symlink': "",
-    \ 'git': {   
-    \   'unstaged': "",
-    \   'staged': "",
-    \   'unmerged': "",
-    \   'renamed': "➜",
-    \   'untracked': "★",
-    \   'deleted': "",
-    \   'ignored': "◌"   },
-    \ 'folder': {
-    \   'arrow_open': "",
-    \   'arrow_closed': "",
-    \   'default': "",
-    \   'open': "",
-    \   'empty': "",
-    \   'empty_open': "",
-    \   'symlink': "",
-    \   'symlink_open': "",   } }
+"let g:nvim_tree_icons = {
+"    \ 'default': "",
+"    \ 'symlink': "",
+"    \ 'git': {   
+"    \   'unstaged': "",
+"    \   'staged': "",
+"    \   'unmerged': "",
+"    \   'renamed': "➜",
+"    \   'untracked': "★",
+"    \   'deleted': "",
+"    \   'ignored': "◌"   },
+"    \ 'folder': {
+"    \   'arrow_open': "",
+"    \   'arrow_closed': "",
+"    \   'default': "",
+"    \   'open': "",
+"    \   'empty': "",
+"    \   'empty_open': "",
+"    \   'symlink': "",
+"    \   'symlink_open': "",   } }
 
 
 
