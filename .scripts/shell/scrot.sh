@@ -1,0 +1,1 @@
+scrot -s -f '/tmp/%F_%T' -e 'xclip -selection clipboard -target image/png -i $f'
