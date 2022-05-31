@@ -3,7 +3,7 @@ configuration {
  display-window: "Windows";
  drun-display-format: "{icon} {name}";
  font: "Terminus 18";
- modi: "drun,window,calc,emoji,combi";
+ modi: "drun,window,combi";
  show-icons: true;
  icon-theme: "Papirus";
  }
