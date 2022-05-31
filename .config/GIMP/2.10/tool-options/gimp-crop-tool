@@ -1,0 +1,8 @@
+# GIMP gimp-crop-tool options
+
+(aspect-denominator 720)
+(aspect-numerator 1280)
+(foreground (color-rgb 0.078431375324726105 0.090196080505847931 0.14901961386203766))
+(pattern "Electric Blue")
+
+# end of gimp-crop-tool options

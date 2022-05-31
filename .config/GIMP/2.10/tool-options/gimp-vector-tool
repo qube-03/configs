@@ -1,0 +1,10 @@
+# GIMP gimp-vector-tool options
+
+(foreground (color-rgb 0.078431375324726105 0.090196080505847931 0.14901961386203766))
+(brush "2. Hardness 075")
+(dynamics "Dynamics Off")
+(pattern "Electric Blue")
+(gradient "FG to BG (RGB)")
+(palette "Color History")
+
+# end of gimp-vector-tool options

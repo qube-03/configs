@@ -1,0 +1,10 @@
+# settings
+
+(GimpGegl-gegl-mean-curvature-blur-config "2022-05-28 17:33:49"
+    (time 1653752029)
+    (iterations 5))
+(GimpGegl-gegl-mean-curvature-blur-config "2022-05-28 17:26:26"
+    (time 1653751586)
+    (iterations 4))
+
+# end of settings
