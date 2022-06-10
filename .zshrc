@@ -27,7 +27,7 @@ zstyle ':completion:*' menu select
 zmodload zsh/complist
 _comp_options+=(globdots)
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh # Autosuggestions
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null # Syntax Highlighting
+source /home/qube/.github/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null # Syntax Highlighting
 zle-line-init() # fix the vi cursor bug
 { zle -K viins 
   echo -ne "\e[5 q" }
@@ -37,42 +37,51 @@ zle -N zle-line-init
 
 #_________________________________________________Aliases
 alias d='doas '
+
 alias p='paru '
+alias pr='paru -Rcns '
+alias less="nvim -c 'set ft=man' "
+
+alias s='source ~/.zshrc '
+alias c='clear'
+alias cp='cp -i'
+alias mv='mv -i'
+alias l='exa -la --color=always --icons --no-permissions --no-user -s type'
+alias mkdir='mkdir -pv'
+alias find='doas find / -iname '
+alias keys='doas pacman -Sy artix-keyring archlinux-keyring chaotic-keyring'
+alias b='bat --style numbers,header-filename,header-filesize,numbers --color=always '
+
 alias gc='git clone '
 alias gcm='git commit '
 alias gp='git pull '
 alias gps='git push '
 alias gs='git status '
 alias ga='git add '
-alias c='clear'
-alias cp='cp -i'
-alias mv='mv -i'
-alias l='exa -la --color=always --icons --no-permissions --no-user -s type'
-alias v='nvim'
-alias tar='tar -xf'
-alias mkdir='mkdir -pv'
-alias find='doas find / -iname '
-alias du='duf'
-alias t='trans '
-alias keys='doas pacman -S artix-keyring archlinux-keyring'
-alias ani='ani-cli'
-alias s='source ~/.zshrc'
-alias b='bat --style numbers,header-filename,header-filesize,numbers --color=always '
+
 alias serv='echo "/etc/runit/sv" && exa -la --color=always --icons --no-permissions --no-user -s type /etc/runit/sv'
 alias serv-running='echo "/run/runit/service" && exa -la --color=always --icons --no-permissions --no-user -s type /run/runit/service'
+
+alias v='nvim'
+alias du='duf'
 alias fetch='fastfetch '
-alias hr='~/.scripts/shell/hr.sh'
+alias top='htop '
+alias oldtop='top '
+alias utf8test='curl https://www.w3.org/2001/06/utf-8-test/UTF-8-demo.html | less '
+alias ani='ani-cli'
 
 
 
 #_________________________________________________Exports
 export LANG="en_US.UTF-8"
-export MYNAME
+export PAGER="/bin/sh -c \"col -b | nvim -c 'set ft=man' -\""
 
+export PATH=$PATH:~/.local/share/bin
 
+export PATH=/usr/bin:/usr/bin:/usr/local/sbin
 
 #_________________________________________________Prompt
-PS1='%F{#465768}%B[%/]%b   %f'
+PS1='%F{#3f4b62}%B[%/]%b ⮞ %f'
 PS2='%F{#465768}  %f '
 
 
