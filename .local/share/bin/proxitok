@@ -6,10 +6,7 @@ if [ $link ]; then
 
   videoid=$(echo $link | cut -d '/' -f 4-4)
 
-  echo $videoid | \
-    xclip -selection clipboard -i
-
-  librewolf --new-instance --profile /home/qube/.librewolf/n6zrkvc0.proxitok https://proxitok.herokuapp.com/
+  librewolf --new-instance --profile /home/qube/.librewolf/n6zrkvc0.proxitok https://proxitok.pussthecat.org/video/$videoid
 
 else
   exit 0
