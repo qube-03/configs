@@ -14,59 +14,66 @@
 #_________________________________________________________GLOBAL
 set $mod Mod4
 set $mod2 Mod1
-font pango:Terminus 14
+font pango:JetBrains Mono 13
 floating_modifier $mod
 
 
 
 #_________________________________________________________KEYBINDS
-#PROGRAMS
-#Terminal
-bindsym $mod+z exec --no-startup-id st zsh
-#File Manager
-bindsym $mod+w exec --no-startup-id spacefm
-#Discord
-bindsym $mod+d exec --no-startup-id discord-canary --disable-smooth-scrolling --ignore-gpu-blocklist --disable-features=UseOzonePlatform --enable-features=VaapiVideoDecoder --use-gl=desktop --enable-gpu-rasterization --enable-zero-copy --no-sandbox
-#Powercord
-#bindsym $mod+d exec --no-startup-id powercord --disable-smooth-scrolling --ignore-gpu-blocklist --disable-features=UseOzonePlatform --enable-features=VaapiVideoDecoder --use-gl=desktop --enable-gpu-rasterization --enable-zero-copy --no-sandbox
-#Screenshot (with Flameshot)
-bindsym $mod+Shift+D exec --no-startup-id /home/qube/.scripts/shell/screenshot.sh
-#Screenshot (with scrot)
-#bindsym $mod+Shift+D exec --no-startup-id /home/qube/.scripts/shell/scrot.sh
+#PROGRAMS ( use xmodmap -pke )
+#Terminal ( mod z )
+bindcode $mod+52 exec --no-startup-id st zsh
+#File Manager ( mod w )
+bindcode $mod+25 exec --no-startup-id spacefm
+#Discord ( mod s )
+#bindcode $mod+40 exec --no-startup-id discord-canary --disable-smooth-scrolling --no-sandbox
+bindcode $mod+40 exec --no-startup-id librewolf --profile /home/qube/.librewolf/tqka6jb7.discord https://discord.com/channels/@me
+#Screenshot ( mod shift s )
+bindcode --release $mod+Shift+40 exec scre
+#FreeTube ( mod f )
+bindcode $mod+26 exec --no-startup-id freetube
 #Chromium
 #bindsym $mod+s exec --no-startup-id chromium --process-per-site --disable-reading-from-canvas
 #Librewolf
-bindsym $mod+s exec librewolf
+bindcode $mod+39 exec librewolf
 # start rofi (a program launcher)
-bindsym $mod2+space exec --no-startup-id rofi -show
+bindcode $mod2+65 exec --no-startup-id rofi -show
+bindcode $mod2+Shift+65 exec --no-startup-id rofi -show emoji
+#SOUNDBOARD
+bindcode $mod+Shift+Ctrl+21 exec --no-startup-id killall mplayer
+bindcode $mod+Shift+Ctrl+20 exec --no-startup-id mplayer "/media/D/Pictures/memes/soundboard/vineboom.mp3"
+bindcode $mod+Shift+Ctrl+19 exec --no-startup-id mplayer "/media/D/Pictures/memes/soundboard/GOOFY.mp3"
+bindcode $mod+Shift+Ctrl+18 exec --no-startup-id mplayer "/media/D/Pictures/memes/soundboard/PUSSY.mp3"
+bindcode $mod+Shift+Ctrl+17 exec --no-startup-id mplayer "/media/D/Pictures/memes/soundboard/reverbfart.mp3"
+bindcode $mod+Shift+Ctrl+16 exec --no-startup-id mplayer "/media/D/Pictures/memes/soundboard/snore.mp3"
+bindcode $mod+Shift+Ctrl+15 exec --no-startup-id mplayer "/media/D/Pictures/memes/soundboard/nenenenenene.mp3"
 #NAVIGATION AND SUCH
 #Kill window
-bindsym $mod+Shift+z kill
+bindcode $mod+Shift+52 kill
 #Change window focus
-bindsym $mod+Shift+N focus left
-bindsym $mod+Shift+E focus down
-bindsym $mod+Shift+I focus up
-bindsym $mod+Shift+O focus right
+bindcode $mod+Shift+44 focus left
+bindcode $mod+Shift+45 focus up
+bindcode $mod+Shift+46 focus down
 #Change window focus with arrow keys
 bindsym $mod+Shift+Left focus left
-bindsym $mod+Shift+Down focus down
 bindsym $mod+Tab focus up
+bindsym $mod+Shift+Down focus down
 bindsym $mod2+Tab focus right
 #Move focused window
-bindsym $mod+n move left
-bindsym $mod+e move down
-bindsym $mod+u move up
+bindcode $mod+44 move left
+bindcode $mod+45 move up
+bindcode $mod+46 move down
 #Move focused window with arrow keys
 bindsym $mod+Left move left
 bindsym $mod+Down move down
 bindsym $mod+Up move up
 bindsym $mod+Right move right
 #Horizontal Split
-bindsym $mod+c split h
+bindcode $mod+54 split h
 #Vertical Split
-bindsym $mod+x split v
+bindcode $mod+53 split v
 #Fullscreen
-bindsym $mod+v fullscreen toggle
+bindcode $mod+55 fullscreen toggle
 #Change window mode
 #bindsym $mod+o layout stacking
 #bindsym $mod+k layout tabbed
@@ -108,11 +115,11 @@ bindsym $mod+Shift+6 move container to workspace number $ws4; workspace number $
 
 #_________________________________________________________OTHER
 #Reload config
-bindsym $mod+Shift+c reload
+bindcode $mod+Shift+54 reload
 #Restart i3
-bindsym $mod+Shift+R restart
+bindcode $mod+Shift+27 restart
 #Exit i3 (logout of X session)
-bindsym $mod+Shift+Q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindcode $mod+Shift+24 exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 #Resize windows
 bindsym $mod+Ctrl+Left resize shrink width 10 px or 10 ppt
@@ -131,18 +138,15 @@ bindsym $mod+Ctrl+Right resize grow width 10 px or 10 ppt
 exec --no-startup-id dex --autostart --environment i3
 #Audio
 exec --no-startup-id pipewire
-exec --no-startup-id pipewire-alsa
 exec --no-startup-id pipewire-pulse
+exec --no-startup-id pipewire-alsa
 exec --no-startup-id pipewire-jack
 exec --no-startup-id wireplumber
-#exec --no-startup-id pipewire-media-session
 exec --no-startup-id easyeffects --gapplication-service
 #Audio Patchbay setup
-#exec --no-startup-id qpwgraph -am ~/.config/qpwgraph/OBS_yes.qpwgraph
+exec --no-startup-id qpwgraph -am ~/.config/qpwgraph/yes.qpwgraph
 #Polkit
 exec --no-startup-id lxsession
-#Keyboard layout
-#exec_always --no-startup-id setxkbmap -layout us,us -variant ,colemak -option grp:shifts_toggle -option caps:none
 #Keyboard rate
 exec_always --no-startup-id xset r rate 275 23
 #Background
@@ -172,7 +176,14 @@ for_window [class="explorer.exe"] floating enable
 for_window [class="Glc_player"] floating enable
 for_window [class="cutentr"] floating enable
 for_window [class="Sxiv"] floating enable
-#for_window [class=""] floating enable
+for_window [title="Edit Message"] floating enable
+for_window [title="Ripcord Voice Chat"] floating enable
+for_window [class="XEyes"] floating enable
+for_window [title="Stopped"] floating enable
+for_window [class="MPlayer"] floating enable
+for_window [class="Lutris"] floating enable
+for_window [class="kcalc"] floating enable
+for_window [title="Emoji"] floating enable
 #for_window [class=""] floating enable
 #for_window [class=""] floating enable
 
