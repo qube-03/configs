@@ -44,8 +44,6 @@ alias less="nvim -c 'set ft=man' "
 
 alias s='source ~/.zshrc '
 alias c='clear'
-alias cp='cp -i'
-alias mv='mv -i'
 alias l='exa -la --color=always --icons --no-permissions --no-user -s type'
 alias mkdir='mkdir -pv'
 alias find='doas find / -iname '
@@ -59,14 +57,14 @@ alias gps='git push '
 alias gs='git status '
 alias ga='git add '
 
-alias serv='echo "/etc/runit/sv" && exa -la --color=always --icons --no-permissions --no-user -s type /etc/runit/sv'
-alias serv-running='echo "/run/runit/service" && exa -la --color=always --icons --no-permissions --no-user -s type /run/runit/service'
+alias srv='echo "/etc/runit/sv" && exa -la --color=always --icons --no-permissions --no-user -s type /etc/runit/sv'
+alias srvr='echo "/run/runit/service" && exa -la --color=always --icons --no-permissions --no-user -s type /run/runit/service'
+alias autostart='echo ~/.config/autostart && l ~/.config/autostart && hr && ~/.config/autostart && echo /etc/xdg/autostart && l /etc/xdg/autostart'
 
 alias v='nvim'
 alias du='duf'
 alias fetch='fastfetch '
-alias top='htop '
-alias oldtop='top '
+alias h='htop '
 alias utf8test='curl https://www.w3.org/2001/06/utf-8-test/UTF-8-demo.html | less '
 alias ani='ani-cli'
 
@@ -78,7 +76,7 @@ export PAGER="/bin/sh -c \"col -b | nvim -c 'set ft=man' -\""
 
 export PATH=$PATH:~/.local/share/bin
 
-export PATH=/usr/bin:/usr/bin:/usr/local/sbin
+
 
 #_________________________________________________Prompt
 PS1='%F{#3f4b62}%B[%/]%b ⮞ %f'
@@ -102,7 +100,7 @@ f() {
     fff "$@"
     cd "$(cat "${XDG_CACHE_HOME:=${HOME}/.cache}/fff/.fff_d")" && exa -la --color=always --icons --no-permissions --no-user -s type
 }
-bindkey -s ^z 'f\n'
+bindkey -s ^Z 'f\n'
 
 export FFF_FILE_ICON=1
 export FFF_CD_ON_EXIT=1
