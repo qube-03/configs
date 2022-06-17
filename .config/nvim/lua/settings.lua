@@ -1,0 +1,13 @@
+local set = vim.opt
+set.tabstop = 2
+set.shiftwidth = 2
+set.expandtab = true
+set.ignorecase = true
+set.hidden = true
+set.hlsearch = true
+set.incsearch = true
+set.lazyredraw = true
+set.magic = true
+set.showmatch = true
+set.number = true
+set.relativenumber = true
