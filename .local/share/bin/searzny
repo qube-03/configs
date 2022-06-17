@@ -1,0 +1,18 @@
+#! /usr/bin/env bash
+
+link="$(zenity --entry --title='SearZNY' --text='Query:' --ok-label='Search' --cancel-label="Don't")"
+
+search() {
+
+  query="$(echo $link             | \
+    tr '[:upper:]' '[:lower:]'    | \
+    sed -e 's/ /+/g')"
+
+  if [ "query" ]; then
+    $BROWSER https://searx.tiekoetter.com/search?q=${query}
+   else
+     exit 0
+  fi
+}
+
+search

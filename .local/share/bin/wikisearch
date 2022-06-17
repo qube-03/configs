@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+wikidir="/usr/share/doc/arch-wiki/html/en/"
+wikidocs="$(/bin/find ${wikidir} -iname "*.html")"
+
+main() {
+
+  choice=$(printf '%s\n' "${wikidocs[@]}"     | \
+    cut -d '/' -f 8-                          | \
+    sed -e 's/_/ /g' -e 's/.html//g'          | \
+    sort                                      | \
+    rofi -dmenu -i -p 'Arch Wiki: ')          || exit 1
+
+    if [ "$choice" ]; then
+      article=$(printf '%s\n' "${wikidir}${choice}.html" | sed 's/ /_/g' )
+      $BROWSER "$article"
+    else
+      echo "Program terminated." && exit 0
+    fi
+
+}
+
+main

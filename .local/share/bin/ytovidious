@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+link="$(zenity --entry --title='Invidiconvert' --text='YouTube Link:' --ok-label='Convert+Copy' --cancel-label="Don't")"
+
+invlink=$(echo $link | sed -e 's/www.youtube.com/invidious.tiekoetter.com/g')
+echo ${invlink} | xclip -selection clipboard -i

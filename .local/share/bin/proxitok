@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+link="$(zenity --entry --title='TikTokonvert' --text='TikTok Link:' --ok-label='Convert' --cancel-label="Don't")"
+
+if [ $link ]; then
+
+  videoid=$(echo $link | cut -d '/' -f 4-4)
+
+  echo $videoid | \
+    xclip -selection clipboard -i
+
+  librewolf --new-instance --profile /home/qube/.librewolf/n6zrkvc0.proxitok https://proxitok.herokuapp.com/
+
+else
+  exit 0
+fi
