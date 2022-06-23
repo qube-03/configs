@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+lssrvdr='ls -1 --color /etc/runit/sv/'
+lssrvrmdr='ls -1 --color /run/runit/service/'
+srvdir='/etc/runit/sv/'
+srvrundir='/run/runit/service'
+doasdir='/usr/bin/doas'
+
+sudodoas () {
+  if [ $doasdir ]; then
+    echo doas
+  else
+    echo sudo
+  fi }
+
+clear
+echo "Do you wish to [l]ist/[a]dd/[r]emove services?"
+read choice
+  if [ "$choice" == l ]; then
+    echo ''
+    $(echo $lssrvdr)
+    echo ''
+
+  elif [ "$choice" == a ]; then
+    echo ''
+    $(echo $lssrvdr)
+    echo ''
+    echo "Which service do you wish to add? "
+    read srv
+    $(sudodoas) ln -s $srvdir$srv $srvrundir
+    echo $srv has been added to available services.
+
+  elif [ "$choice" == r ]; then
+    $(echo $lssrvrmdr)
+    echo ''
+    echo "Which service do you wish to remove? "
+    read rmsrv
+    $(sudodoas) rm $(echo $srvrundir/$rmsrv)
+    echo $rmsrv has been removed from available services.
+
+  elif [ "$choice" != l,a,r ]; then
+    echo "died 💀"
+    exit 0
+  fi
