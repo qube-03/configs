@@ -1,0 +1,76 @@
+Sxiv.background: #000000
+Sxiv.foreground: #00baff
+Sxiv.font: JetBrains Mono-14
+
+!! URXVT
+!! Colorscheme
+!font
+*.foreground: #ffffff
+!bg
+*.background: #000000
+!cursor
+!*.cursorColor:  #c744a7
+*.cursorColor:  #ffffff
+*.cursorColor2: #000000
+
+!8 normal colors
+*.color0:  #000000   
+*.color1:  #ed2e47
+*.color2:  #3e9a45
+*.color3:  #fdbc4b
+*.color4:  #1d99f3
+*.color5:  #9b59b6
+*.color6:  #19b9bc
+*.color7:  #ffffff
+
+*.color8:  #303030
+*.color9:  #ed2e47
+*.color10: #3e9a45
+*.color11: #fdbc4b
+*.color12: #1d99f3
+*.color13: #9b59b6
+*.color14: #19b9bc
+*.color15: #ffffff
+
+!! Appearance
+URxvt.font:            xft:DejaVuSansMono Nerd Font:size=19
+URxvt.boldFont:        xft:DejaVuSansMono Nerd Font:style=Bold:size=19
+URxvt.italicFont:      xft:DejaVuSansMono Nerd Font:style=Italic:size=19
+URxvt.boldItalicFont:  xft:DejaVuSansMono Nerd Font:style=BoldItalic:size=19
+!URxvt.font:            xft:mono:size=17
+!URxvt.boldFont:        xft:mono:style=Bold:size=17
+!URxvt.italicFont:      xft:mono:style=Italic:size=17
+!URxvt.boldItalicfont:  xft:mono:style=BoldItalic:size=17
+URxvt.letterSpace:     0
+URxvt.lineSpace:       1
+URxvt.internalBorder:  0
+URxvt.cursorBlink:     false
+URxvt.cursorUnderline: false
+URxvt.saveline:        10
+URxvt.scrollBar:       false
+URxvt.urgentOnBell:    true
+URxvt.depth:           24
+URxvt.iso14755:        false
+
+!! Navigation
+URxvt.scrollTtyOutput:   false
+URxvt.scrollWithBuffer:  true
+URxvt.scrollTtyKeypress: true
+URxvt.secondaryScreen:   1
+URxvt.secondaryScroll:   0
+
+!! Extensions
+URxvt.perl-ext-common: default,matcher,clipboard,keyboard-select,resize-font,vtwheel
+!clipboard
+URxvt.copyCommand:  xclip -i -selection clipboard
+URxvt.pasteCommand: xclip -o -selection clipboard
+URxvt.clipboard.autocopy: true
+URxvt.keysym.M-c:   perl:clipboard:copy
+URxvt.keysym.M-v:   perl:clipboard:paste
+URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+!resize-font
+URxvt.resize-font.bigger:  M-Up
+URxvt.resize-font.smaller: M-Down
+!keyboard-select
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+URxvt.keysym.M-n:      perl:keyboard-select:search
