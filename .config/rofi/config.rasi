@@ -1,11 +1,12 @@
-configuration {
- display-drun: "Run";
- display-window: "Windows";
+configuration 
+{display-drun: "";
+ display-window: "";
+ display-emoji: "";
  drun-display-format: "{icon} {name}";
- font: "Terminus 18";
- modi: "drun,window,combi";
+ font: "JetBrains Mono 16";
+ modi: "drun";
  show-icons: true;
  icon-theme: "Papirus";
- }
+ border-radius: 8px 0px 0px 8px;}
 
-@theme "~/.local/share/rofi/themes/sidebar.rasi"
+@theme "themes/gnome.rasi"

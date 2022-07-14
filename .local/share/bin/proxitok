@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-link="$(zenity --entry --title='TikTokonvert' --text='TikTok Link:' --ok-label='Convert' --cancel-label="Don't")"
+link="$(zenity --entry --title='TikTokonvert' --text='TikTok Link:' --ok-label='Open' --cancel-label="Cancel")"
 
 if [ $link ]; then
 

@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+cdir='/home/qube/.config'
+cutcmd='cut -d / -f 5-'
+scmd='sed -e "s/[/]/ /g"'
+i3c=$(echo $cdir/i3/config | $(echo $cutcmd))
+pbc=$(echo $cdir/polybar/config.ini | $(echo $cutcmd))
+nvc=$(echo $cdir/nvim/init.lua | $(echo $cutcmd))
+nvc_key=$(echo $cdir/nvim/lua/keybinds.lua | $(echo $cutcmd))
+nvc_lsp_cc=$(echo $cdir/nvim/lua/lspconfig-config.lua | $(echo $cutcmd))
+nvc_lsp_cu=$(echo $cdir/nvim/lua/lspcustomization.lua | $(echo $cutcmd))
+nvc_cmp=$(echo $cdir/nvim/lua/nvimcmp.lua | $(echo $cutcmd))
+nvc_plg=$(echo $cdir/nvim/lua/plugins.lua | $(echo $cutcmd))
+nvc_set=$(echo $cdir/nvim/lua/settings.lua | $(echo $cutcmd))
+nvc_vim=$(echo $cdir/nvim/lua/keybinds.lua | $(echo $cutcmd))
+pic=$(echo $cdir/picom/picom.conf | $(echo $cutcmd))
+
+
+pick() {
+  config=$(printf '%s\n' \
+      $i3c \
+      $pbc \
+      $nvc \
+      $nvc_key \
+      $nvc_lsp_cc \
+      $nvc_lsp_cu \
+      $nvc_cmp \
+      $nvc_plg \
+      $nvc_set \
+      $nvc_vim \
+      $pic | sort | \
+    rofi -i -dmenu -p "" -theme themes/sidebar.rasi)
+
+    if [ "$config" ]; then
+      st -e nvim $cdir/$config
+    else
+      exit 0
+    fi  }
+
+pick
