@@ -65,8 +65,8 @@ URxvt.perl-ext-common: default,matcher,clipboard,keyboard-select,resize-font,vtw
 URxvt.copyCommand:  xclip -i -selection clipboard
 URxvt.pasteCommand: xclip -o -selection clipboard
 URxvt.clipboard.autocopy: true
-URxvt.keysym.M-c:   perl:clipboard:copy
-URxvt.keysym.M-v:   perl:clipboard:paste
+URxvt.keysym.M-c: perl:clipboard:copy
+URxvt.keysym.M-v: perl:clipboard:paste
 URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
 !resize-font
 URxvt.resize-font.bigger:  M-Up
@@ -74,3 +74,16 @@ URxvt.resize-font.smaller: M-Down
 !keyboard-select
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
 URxvt.keysym.M-n:      perl:keyboard-select:search
+
+URxvt.keysym.M-Up:    \033[1;3A
+URxvt.keysym.M-Down:  \033[1;3B
+URxvt.keysym.M-Left:  \033[1;3D
+URxvt.keysym.M-Right: \033[1;3C
+URxvt.keysym.S-Up:    \033[1;2A
+URxvt.keysym.S-Down:  \033[1;2B
+URxvt.keysym.S-Left:  \033[1;2D
+URxvt.keysym.S-Right: \033[1;2C
+URxvt.keysym.C-Up:    \033[1;5A
+URxvt.keysym.C-Down:  \033[1;5B
+URxvt.keysym.C-Left:  \033[1;5D
+URxvt.keysym.C-Right: \033[1;5C
